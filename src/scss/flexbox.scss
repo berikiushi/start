@@ -1,0 +1,212 @@
+/* Display
+---------------------------------------------------------------------------- */
+%display-flex {
+  display: flex;
+}
+%display-inline-flex {
+  display: inline-flex;
+}
+@mixin display-flex() {
+  @extend %display-flex;
+}
+@mixin display-inline-flex() {
+  @extend %display-inline-flex;
+}
+
+/* Flex direction
+---------------------------------------------------------------------------- */
+%flex-direction-row {
+  flex-direction: row;
+}
+%flex-direction-row-reverse {
+  flex-direction: row-reverse;
+}
+%flex-direction-column {
+  flex-direction: column;
+}
+%flex-direction-column-reverse {
+  flex-direction: column-reverse;
+}
+%flex-direction-inherit {
+  flex-direction: inherit;
+}
+@mixin flex-direction($direction: row) {
+  @if not index((row, row-reverse, column, column-reverse, inherit), $direction) {
+    $direction: row;
+  }
+  @extend %flex-direction-#{$direction};
+}
+
+/* Flex wrap
+---------------------------------------------------------------------------- */
+%flex-wrap-nowrap {
+  flex-wrap: nowrap;
+}
+%flex-wrap-wrap {
+  flex-wrap: wrap;
+}
+%flex-wrap-wrap-reverse {
+  flex-wrap: wrap-reverse;
+}
+%flex-wrap-inherit {
+  flex-wrap: inherit;
+}
+@mixin flex-wrap($wrap: nowrap) {
+  @if not index((nowrap, wrap, wrap-reverse, inherit), $wrap) {
+    $wrap: nowrap;
+  }
+  @extend %flex-wrap-#{$wrap};
+}
+
+/* Flex flow
+---------------------------------------------------------------------------- */
+@mixin flex-flow($direction, $wrap) {
+  @include flex-direction($direction);
+  @include flex-wrap($wrap);
+}
+
+/* Order
+---------------------------------------------------------------------------- */
+@mixin order($order: 0) {
+  order: $order;
+}
+
+/* Flex grow
+---------------------------------------------------------------------------- */
+@mixin flex-grow($grow: 0) {
+  flex-grow: $grow;
+}
+
+/* Flex shrink
+---------------------------------------------------------------------------- */
+@mixin flex-shrink($shrink: 1) {
+  flex-shrink: $shrink;
+}
+
+/* Flex basis
+---------------------------------------------------------------------------- */
+@mixin flex-basis($basis: auto) {
+  flex-basis: $basis;
+}
+
+/* Flex
+---------------------------------------------------------------------------- */
+@mixin flex($grow: 0, $shrink: 1, $basis: auto) {
+  @include flex-grow($grow);
+  @include flex-shrink($shrink);
+  @include flex-basis($basis);
+}
+
+/* Justify content
+---------------------------------------------------------------------------- */
+%justify-content-flex-start {
+  justify-content: flex-start;
+}
+%justify-content-flex-end {
+  justify-content: flex-end;
+}
+%justify-content-center {
+  justify-content: center;
+}
+%justify-content-space-between {
+  justify-content: space-between;
+}
+%justify-content-space-around {
+  justify-content: space-around;
+}
+%justify-content-inherit {
+  justify-content: inherit;
+}
+@mixin justify-content($justify: flex-start) {
+  @if not index((flex-start, flex-end, center, space-between, space-around, inherit), $justify) {
+    $justify: flex-start;
+  }
+  @extend %justify-content-#{$justify};
+}
+
+/* Align items
+---------------------------------------------------------------------------- */
+%align-items-flex-start {
+  align-items: flex-start;
+}
+%align-items-flex-end {
+  align-items: flex-end;
+}
+%align-items-center {
+  align-items: center;
+}
+%align-items-baseline {
+  align-items: baseline;
+}
+%align-items-stretch {
+  align-items: stretch;
+}
+%align-items-inherit {
+  align-items: inherit;
+}
+@mixin align-items($align: stretch) {
+  @if not index((flex-start, flex-end, center, baseline, stretch, inherit), $align) {
+    $align: stretch;
+  }
+  @extend %align-items-#{$align};
+}
+
+/* Align self
+---------------------------------------------------------------------------- */
+%align-self-auto {
+  align-self: auto;
+}
+%align-self-flex-start {
+  align-self: flex-start;
+}
+%align-self-flex-end {
+  align-self: flex-end;
+}
+%align-self-center {
+  align-self: center;
+}
+%align-self-baseline {
+  align-self: baseline;
+}
+%align-self-stretch {
+  align-self: stretch;
+}
+%align-self-inherit {
+  align-self: inherit;
+}
+@mixin align-self($align: auto) {
+  @if not index((auto, flex-start, flex-end, center, baseline, stretch, inherit), $align) {
+    $align: auto;
+  }
+  @extend %align-self-#{$align};
+}
+
+/* Align content
+---------------------------------------------------------------------------- */
+%align-content-flex-start {
+  align-content: flex-start;
+}
+%align-content-flex-end {
+  align-content: flex-end;
+}
+%align-content-center {
+  align-content: center;
+}
+%align-content-space-between {
+  align-content: space-between;
+}
+%align-content-space-around {
+  align-content: space-around;
+}
+%align-content-stretch {
+  align-content: stretch;
+}
+%align-content-inherit {
+  align-content: inherit;
+}
+@mixin align-content($align: stretch) {
+  @if not index((flex-start, flex-end, center, space-between, space-around, stretch, inherit), $align) {
+    $align: stretch;
+  }
+  @extend %align-content-#{$align};
+}
