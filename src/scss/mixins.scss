@@ -16,6 +16,12 @@
 }
 
 
+@mixin vertical-align {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+
 @mixin absolute-center {
   position: absolute;
   top: 0;
@@ -49,4 +55,39 @@
 }
 @mixin for-big-desktop-up {
   @media (min-width: 1800px) { @content; }
+}
+
+
+// Retina
+@media (min-width: 320px) {
+  /* Small screen, non-retina */
+}
+
+@media
+(min-device-pixel-ratio: 2) and (min-width: 320px),
+(min-resolution: 192dpi) and (min-width: 320px),
+(min-resolution: 2dppx) and (min-width: 320px) { 
+  /* Small screen, retina, stuff to override above media query */
+}
+
+@media (min-width: 768px) {
+  /* Medium screen, non-retina */
+}
+
+@media
+(min-device-pixel-ratio: 2)  and (min-width: 768px),
+(min-resolution: 192dpi) and (min-width: 768px),
+(min-resolution: 2dppx)  and (min-width: 768px) { 
+  /* Medium screen, retina, stuff to override above media query */
+}
+
+@media (min-width: 1440px) {
+  /* Large screen, non-retina */
+}
+
+@media
+(min-device-pixel-ratio: 2) and (min-width: 1440px),
+(min-resolution: 192dpi) and (min-width: 1440px),
+(min-resolution: 2dppx)  and (min-width: 1440px) { 
+  /* Large screen, retina, stuff to override above media query */
 }

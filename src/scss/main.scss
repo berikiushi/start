@@ -1,0 +1,23 @@
+@charset 'utf-8';
+
+/*
+Author:     Yury Lysov (https://github.com/berikiushi)
+Version:    06.2017
+------------------------------------------------------*/
+
+@import './normalize';
+@import './variables';
+@import './mixins';
+@import './fonts';
+@import './common';
+
+@import './icons';
+@import './buttons';
+
+
+@import '../components/footer/footer';
+
+
+
+// Debug
+//*, *:before, *:after { background-color: rgba(66, 77, 88, .2); }

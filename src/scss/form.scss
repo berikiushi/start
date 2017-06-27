@@ -1,0 +1,29 @@
+.form {
+  &--inline {
+    display: flex;
+  }
+  &__group {
+
+  }
+  &__label {
+    color: #fff;
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+  &__input {
+    width: 100%;
+    max-width: 240px;
+    height: 60px;
+    border: 3px solid #eee;
+    background-color: #fff;
+    text-align: center;
+    transition: all $slow;
+    &:focus {
+      border: 3px solid #ffdc77;
+    }
+    &::placeholder {
+      color: #7f7f7f;
+      font-size: 18px;
+    }
+  }
+}

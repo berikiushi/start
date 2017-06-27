@@ -1,93 +1,86 @@
-'use strict';
-
 var gulp = require('gulp');
 var sass = require('gulp-sass');
-var sourcemaps = require('gulp-sourcemaps');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var browserSync = require('browser-sync').create();
-var imagemin = require('gulp-imagemin');
-var cache = require('gulp-cache');
-//var csso = require('postcss-csso');
+// var imagemin = require('gulp-imagemin');
 var pug = require('gulp-pug');
+var notify = require("gulp-notify");
 
 
-gulp.task('sass', function () {
-  return gulp.src('./src/main.scss')
-    .pipe(sourcemaps.init())
-    .pipe(sass({ outputStyle: 'expanded', errLogToConsole: true }).on('error', sass.logError))
-    .pipe(postcss([ autoprefixer({
-      browsers: ['last 2 versions'],
-      cascade: false
-    }) ]))
-    //.pipe( postcss([ csso() ]))
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('./dist/assets/css'))
-    .pipe(browserSync.stream({match: "**/*.css"}));
+gulp.task('clean', function() {
+  //return del([ 'dist' ]);
 });
 
 
-gulp.task('html', function () {
-  return gulp.src('./src/*.pug')
+gulp.task('styles', function() {
+  return gulp.src('./src/scss/main.scss', { sourcemaps: true })
+    .pipe(sass({ outputStyle: 'expanded', errLogToConsole: true })).on("error", notify.onError({ sound: false }))
+    .pipe(postcss([
+      require('postcss-inline-svg'),
+      require('postcss-svgo'),
+      autoprefixer({
+        browsers: ['last 2 versions', '> 1%', 'Android >= 4', 'iOS >= 8'],
+        cascade: false
+      }),
+    ]))
+    .pipe(gulp.dest('./dist/css'))
+    .pipe(browserSync.stream());
+});
+
+
+gulp.task('html', function() {
+  return gulp.src('./src/*.pug', { since: gulp.lastRun('html') })
   .pipe(pug({
     pretty: true
   }))
-  .pipe(gulp.dest('./dist'));
+  .pipe(gulp.dest('./dist'))
+  .pipe(browserSync.stream());
 });
 
 
-gulp.task('image', function () {
-  return gulp.src('./src/assets/images/**/*.+(png|jpg|gif|svg)')
-    .pipe(cache(imagemin()))
-    .pipe(gulp.dest('./dist/assets/images'));
+gulp.task('scripts', function() {
+  return gulp.src('./src/js/**/*')
+    .pipe(gulp.dest('./dist/js'))
+    .pipe(browserSync.stream());
 });
 
 
-gulp.task('js', function () {
-  return gulp.src('./src/js/*js')
-    .pipe(gulp.dest('./dist/js'));
+gulp.task('assets', function() {
+  return gulp.src('./src/assets/**/*', { since: gulp.lastRun('assets') })
+    .pipe(gulp.dest('./dist/assets'))
+    .pipe(browserSync.stream());
 });
 
 
-gulp.task('fonts', function() {
-  return gulp.src('./src/assets/fonts/**/*')
-    .pipe(gulp.dest('./dist/assets/fonts'))
-})
-
-
-gulp.task('serve', ['sass'], function () {
-  browserSync.watch(['./src/main.scss', 'src/scss/*.scss', 'src/components/**/*.scss'], function () {
-    gulp.start('sass');
-  });
-
-  browserSync.watch(['./src/*.pug', 'src/components/**/*.pug'], function () {
-    gulp.start('html');
-  });
-
-  browserSync.watch('./src/js/*.js', function () {
-    gulp.start('js');
-  });
-
-  browserSync.watch('./src/assets/images/**/*', function () {
-    gulp.start('image');
-  });
-
-  browserSync.watch('./src/assets/fonts/**/*', function () {
-    gulp.start('fonts');
-  });
-
-  browserSync.watch('./dist/assets/images/**/*', function () {
-    browserSync.reload();
-  });
-
-  browserSync.watch('./dist/*.html').on('change',  browserSync.reload);
-
+gulp.task('server', function() {
   browserSync.init({
-    server: './dist'
+    server: './dist',
+    notify: false,
   });
 });
 
 
-gulp.task('dev', ['sass', 'html', 'image', 'js', 'fonts', 'serve']);
+gulp.task('watch', function() {
+  gulp.watch([
+    './src/scss/main.scss',
+    './src/scss/**/*.scss',
+    './src/components/**/*.scss'
+  ], gulp.parallel('styles'));
 
-gulp.task('default', ['dev']);
+  gulp.watch([
+    './src/*.pug',
+    './src/components/**/*.pug'
+  ], gulp.parallel('html'));
+
+  gulp.watch([
+    './src/js/*.js',
+  ], gulp.parallel('scripts'));
+
+  gulp.watch([
+    './src/assets/**/*',
+  ], gulp.parallel('assets'));
+});
+
+
+gulp.task('default', gulp.series('styles', 'html', 'scripts', 'assets', gulp.parallel('server', 'watch')));

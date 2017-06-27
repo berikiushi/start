@@ -1,1 +1,1 @@
-# Frontend start template with SCSS/Pug and watchers on Gulp and livereload in browser
+# A simple template with Pug/SCSS on Gulp

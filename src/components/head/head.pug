@@ -1,11 +1,28 @@
 head
   meta(charset="utf-8")
+
+  title Start
+  meta(name="description", content="")
+  meta(name="keywords", content="")
+
   meta(http-equiv="X-UA-Compatible" content="IE=edge")
   meta(name="viewport", content="width=device-width, initial-scale=1")
-  title Start
-  link(rel="stylesheet", href="./assets/css/main.css")
-  script(src="js/vendor/modernizr-2.8.3.min.js")
 
-  <!--[if lt IE 9]>
-    script(src="js/vendor/respond/1.4.2/respond.min.js")
-  <![endif]-->
+  //- Chrome, Firefox OS and Opera
+  meta(name="theme-color", content="#000")
+
+  //- iOS Safari status bar
+  meta(name="apple-mobile-web-app-status-bar-style", content="#000")
+  meta(name="apple-mobile-web-app-capable", content="yes")
+
+  //- Windows Phone
+  meta(name="msapplication-navbutton-color", content="#000")
+
+  style.
+    html {
+      background-color: #fff;
+    }
+    body {
+      opacity: 0;
+      overflow-x: hidden;
+    }

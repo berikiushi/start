@@ -1,0 +1,40 @@
+/*
+
+@svg-load fb url(assets/images/icons/icon-fb.svg) {
+  path:nth-child(1) {
+    fill: #3c3c3c;
+  }
+}
+
+@svg-load arrow url(assets/images/icons/icon-menu-arrow.svg) {
+  path:nth-child(1) {
+    stroke: #fff;
+  }
+}
+
+
+.icon {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  line-height: inherit;
+  background-repeat: no-repeat;
+
+  &--zoom {
+    width: 16px;
+    height: 16px;
+    background: svg-load('assets/images/icons/icon-zoom.svg');
+    background-size: 16px;
+    background-repeat: no-repeat;
+  }
+
+  &--fb {
+    top: -1px;
+    width: 36px;
+    height: 36px;
+    background: svg-inline(fb);
+    background-size: 36px;
+    background-repeat: no-repeat;
+  }
+}
+*/
