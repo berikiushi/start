@@ -3,3 +3,4 @@ dist/
 .editorconfig
 .stylelintrc
 .DS_Store
+package-lock.json

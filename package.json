@@ -13,10 +13,12 @@
     "browser-sync": "^2.18.11",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-notify": "^3.0.0",
+    "gulp-plumber": "^1.1.0",
     "gulp-postcss": "^7.0.0",
     "gulp-pug": "^3.3.0",
     "gulp-sass": "^3.1.0",
     "postcss-inline-svg": "^3.0.0",
-    "postcss-svgo": "^2.1.6"
+    "postcss-svgo": "^2.1.6",
+    "stylelint-config-standard": "^17.0.0"
   }
 }

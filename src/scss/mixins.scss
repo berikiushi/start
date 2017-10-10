@@ -1,93 +1,39 @@
-@mixin ib ($valine: top) {
-  display: inline-block;
-  vertical-align: $valine;
-}
-
-
+// clearfix
 @mixin clearfix {
-  &:before,
-  &:after {
-    content: "";
+  &::after {
     display: table;
-  }
-  &:after {
     clear: both;
+    content: '';
   }
 }
-
-
-@mixin vertical-align {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-
-@mixin absolute-center {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-}
-
-
-@mixin for-phone-only {
-  @media (max-width: 599px) { @content; }
-}
-@mixin for-tablet-portrait-up {
-  @media (min-width: 600px) { @content; }
-}
-@mixin for-tablet-portait-only {
-  @media (min-width: 600px) and (max-width: 899px) { @content; }
-}
-@mixin for-tablet-landscape-up {
-  @media (min-width: 900px) { @content; }
-}
-@mixin for-tablet-landscape-only {
-  @media (min-width: 900px) and (max-width: 1199px) { @content; }
-}
-@mixin for-desktop-up {
-  @media (min-width: 1200px) { @content; }
-}
-@mixin for-desktop-only {
-  @media (min-width: 1200px) and (max-width: 1799px) { @content; }
-}
-@mixin for-big-desktop-up {
-  @media (min-width: 1800px) { @content; }
-}
-
 
 // Retina
 @media (min-width: 320px) {
   /* Small screen, non-retina */
 }
 
-@media
-(min-device-pixel-ratio: 2) and (min-width: 320px),
-(min-resolution: 192dpi) and (min-width: 320px),
-(min-resolution: 2dppx) and (min-width: 320px) { 
-  /* Small screen, retina, stuff to override above media query */
+@media (min-device-pixel-ratio: 2) and (min-width: 320px),
+  (min-resolution: 192dpi) and (min-width: 320px),
+  (min-resolution: 2dppx) and (min-width: 320px) {
+  // Small screen, retina, stuff to override above media query
 }
 
 @media (min-width: 768px) {
-  /* Medium screen, non-retina */
+  // Medium screen, non-retina
 }
 
-@media
-(min-device-pixel-ratio: 2)  and (min-width: 768px),
-(min-resolution: 192dpi) and (min-width: 768px),
-(min-resolution: 2dppx)  and (min-width: 768px) { 
-  /* Medium screen, retina, stuff to override above media query */
+@media (min-device-pixel-ratio: 2) and (min-width: 768px),
+  (min-resolution: 192dpi) and (min-width: 768px),
+  (min-resolution: 2dppx) and (min-width: 768px) {
+  // Medium screen, retina, stuff to override above media query
 }
 
 @media (min-width: 1440px) {
-  /* Large screen, non-retina */
+  // Large screen, non-retina
 }
 
-@media
-(min-device-pixel-ratio: 2) and (min-width: 1440px),
-(min-resolution: 192dpi) and (min-width: 1440px),
-(min-resolution: 2dppx)  and (min-width: 1440px) { 
-  /* Large screen, retina, stuff to override above media query */
+@media (min-device-pixel-ratio: 2) and (min-width: 1440px),
+  (min-resolution: 192dpi) and (min-width: 1440px),
+  (min-resolution: 2dppx) and (min-width: 1440px) {
+  // Large screen, retina, stuff to override above media query
 }

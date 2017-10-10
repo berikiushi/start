@@ -7,20 +7,16 @@ $blue:                #1d90ff;
 $primary-color:       $blue;
 $secondary-color:     $yellow;
 
-
 // Fonts
+$sans-serif:          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 $serif:               "Lora", "Playfair Display", Georgia, serif;
-$sans-serif:          "Roboto", "Source Sans Pro", "Open Sans", Arial, sans-serif;
 $monospace:           "Inconsolata", monospace;
-  
-$primary-font:        $sans-serif;
-$secondary-font:      $serif;
 
+$primary-font:        $sans-serif;
 
 // Dimensions
 $container-with: 1170px;
 $footer-height: 115px;
-
 
 // Transitions
 $fast: 150ms;

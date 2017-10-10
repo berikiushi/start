@@ -1,5 +1,5 @@
 doctype html
-html(lang="en")
+html(lang='en')
   include ./components/head/head.pug
   body
     .wrapper
@@ -10,14 +10,18 @@ html(lang="en")
 
           hr
 
-          - var items = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6"]
+          - var items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6']
           ul
             each item in items
-              li(class=((item == "Item 1") ? 'active' : ''))
-                a(href="#")= item
+              li(class=((item == 'Item 1') ? 'active' : ''))
+                a(href='#')= item
+
+          img(src='image.png' srcset='image.svg' alt='image')
+          img(src='image.png' srcset='image@2x.png 2x' alt='image')
+          img(src='clock-demo-thumb-200.png' srcset='clock-demo-thumb-200.png 200w, clock-demo-thumb-400.png 400w' sizes='(min-width: 600px) 200px, 50vw')
 
 
     include ./components/footer/footer.pug
 
-  link(rel="stylesheet", href="./css/main.css")
+  link(rel='stylesheet', href='./css/main.css')
   script(src='./js/main.js')

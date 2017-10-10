@@ -6,15 +6,17 @@ var browserSync = require('browser-sync').create();
 // var imagemin = require('gulp-imagemin');
 var pug = require('gulp-pug');
 var notify = require("gulp-notify");
+var plumber = require('gulp-plumber');
 
 
-gulp.task('clean', function() {
+gulp.task('clean', function () {
   //return del([ 'dist' ]);
 });
 
 
-gulp.task('styles', function() {
+gulp.task('styles', function () {
   return gulp.src('./src/scss/main.scss', { sourcemaps: true })
+    .pipe(plumber())
     .pipe(sass({ outputStyle: 'expanded', errLogToConsole: true })).on("error", notify.onError({ sound: false }))
     .pipe(postcss([
       require('postcss-inline-svg'),
@@ -29,31 +31,32 @@ gulp.task('styles', function() {
 });
 
 
-gulp.task('html', function() {
-  return gulp.src('./src/*.pug', { since: gulp.lastRun('html') })
-  .pipe(pug({
-    pretty: true
-  }))
-  .pipe(gulp.dest('./dist'))
-  .pipe(browserSync.stream());
+gulp.task('html', function () {
+  return gulp.src('./src/*.pug')
+    .pipe(plumber())
+    .pipe(pug({
+      pretty: true
+    }))
+    .pipe(gulp.dest('./dist'))
+    .pipe(browserSync.stream());
 });
 
 
-gulp.task('scripts', function() {
+gulp.task('scripts', function () {
   return gulp.src('./src/js/**/*')
     .pipe(gulp.dest('./dist/js'))
     .pipe(browserSync.stream());
 });
 
 
-gulp.task('assets', function() {
+gulp.task('assets', function () {
   return gulp.src('./src/assets/**/*', { since: gulp.lastRun('assets') })
     .pipe(gulp.dest('./dist/assets'))
     .pipe(browserSync.stream());
 });
 
 
-gulp.task('server', function() {
+gulp.task('server', function () {
   browserSync.init({
     server: './dist',
     notify: false,
@@ -61,7 +64,7 @@ gulp.task('server', function() {
 });
 
 
-gulp.task('watch', function() {
+gulp.task('watch', function () {
   gulp.watch([
     './src/scss/main.scss',
     './src/scss/**/*.scss',

@@ -1,36 +1,50 @@
 /* Common Styles
 ----------------------------------------------------------------------------- */
-html {
-  width: 100%;
-  height: 100%;
+html,
+body {
+  min-height: 100%;
+  -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  height: 100%;
   box-sizing: border-box;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
 body {
-  width: 100%;
   height: 100%;
   font-family: $primary-font;
-  line-height: 1.75;
-  opacity: 1;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.25;
 }
 
-*, *:focus {
+*,
+*:focus {
   outline: none;
 }
+
 *::-moz-focus-inner {
   border: 0 none;
 }
 
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration {
+::selection {
+  background: #b3c2bf;
+  color: white;
+}
+
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
   display: none;
 }
 
@@ -41,6 +55,7 @@ input[type="search"]::-webkit-search-results-decoration {
 ul {
   margin: 0;
   padding: 0;
+
   li {
     list-style: none;
   }
@@ -52,8 +67,24 @@ p {
 }
 
 a {
+  color: #0079a7;
+  background-image: linear-gradient(rgba(0, 120, 170, 0.3), rgba(0, 120, 170, 0.3));
+  background-repeat: repeat-x;
+  background-position: 0 92%;
+  background-size: 1px 1px;
   text-decoration: none;
-  transition: all $slow;
+  transition: all $mid 0s ease;
+  cursor: pointer;
+  text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+}
+
+a:focus,
+a:hover,
+a:active {
+  outline: none;
+  color: #67ca00;
+  background-image: linear-gradient(#67ca00, #67ca00);
+  text-decoration: none;
 }
 
 textarea {
@@ -74,7 +105,8 @@ hr {
   min-width: 320px;
   min-height: 100%;
   overflow-x: hidden;
-  &:after {
+
+  &::after {
     display: block;
     content: '';
     height: $footer-height;
@@ -86,5 +118,6 @@ hr {
   width: 100%;
   max-width: $container-with;
   margin: 0 auto;
+
   @include clearfix;
 }
