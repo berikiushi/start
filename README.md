@@ -2,5 +2,5 @@
 
 ```
 npm i
-gulp
+npm run dev
 ```

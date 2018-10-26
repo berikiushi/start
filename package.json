@@ -1,24 +1,24 @@
 {
   "name": "start",
   "version": "1.0.0",
-  "description": "",
+  "description": "``` npm i gulp ```",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node_modules/.bin/gulp"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "autoprefixer": "^7.1.0",
-    "browser-sync": "^2.18.11",
-    "gulp": "github:gulpjs/gulp#4.0",
-    "gulp-notify": "^3.0.0",
-    "gulp-plumber": "^1.1.0",
-    "gulp-postcss": "^7.0.0",
-    "gulp-pug": "^3.3.0",
-    "gulp-sass": "^3.1.0",
-    "postcss-inline-svg": "^3.0.0",
-    "postcss-svgo": "^2.1.6",
-    "stylelint-config-standard": "^17.0.0"
+    "autoprefixer": "^9.3.1",
+    "browser-sync": "^2.26.3",
+    "gulp": "^4.0.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-pug": "^4.0.1",
+    "gulp-sass": "^4.0.2",
+    "postcss-inline-svg": "^3.1.1",
+    "postcss-svgo": "^4.0.1",
+    "stylelint-config-standard": "^18.2.0"
   }
 }
