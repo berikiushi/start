@@ -1,18 +1,19 @@
 // Colors
-$yellow:              #fce473;
-$pink:                #c71585;
-$green:               #32cd32;
-$blue:                #1d90ff;
-  
-$primary-color:       $blue;
-$secondary-color:     $yellow;
+$yellow: #fce473;
+$pink: #c71585;
+$green: #32cd32;
+$blue: #1d90ff;
+
+$primary-color: $blue;
+$secondary-color: $yellow;
 
 // Fonts
-$sans-serif:          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-$serif:               "Lora", "Playfair Display", Georgia, serif;
-$monospace:           "Inconsolata", monospace;
+$sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans,
+  Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+$serif: 'Lora', 'Playfair Display', Georgia, serif;
+$monospace: 'Inconsolata', monospace;
 
-$primary-font:        $sans-serif;
+$primary-font: $sans-serif;
 
 // Dimensions
 $container-with: 1170px;
@@ -20,5 +21,5 @@ $footer-height: 115px;
 
 // Transitions
 $fast: 150ms;
-$mid:  350ms;
+$mid: 350ms;
 $slow: 500ms;
